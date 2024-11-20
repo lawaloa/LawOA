@@ -193,13 +193,13 @@ pacman::p_load(tidyverse)|>
 #' @export
 #'
 #' @examples
-#' calculate_isoniazid_dosage2(c(42, 30, 70)) or
+#' calculate_isoniazid_dosage(c(42, 30, 70)) or
 #'
 #' medicaldata::smartpill |>
 #' as_tibble() |>
 #'  select(Weight) |>
 #'  mutate(dosage = calculate_isoniazid_dosage2(Weight))
-calculate_isoniazid_dosage2 <- function(weight) {
+calculate_isoniazid_dosage <- function(weight) {
   if (any(weight < 30)) stop("Weights must all be at least 30 kg.")
 
   # Your code here
