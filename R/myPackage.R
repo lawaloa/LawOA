@@ -174,6 +174,8 @@ classify_temp <- function(temp){
 #' @examples
 #' classify_temp(36.9)
 classify_temp2 <- function(temp) {
+  if(!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)|>
   dplyr::case_when(
     temp < 35 ~ "hypothermia",
     temp >= 35 & temp <= 37 ~ "normal",
@@ -231,7 +233,9 @@ calculate_isoniazid_dosage2 <- function(weight) {
 calculate_isoniazid_dosage2 <- function(weight) {
   if (any(weight < 30)) stop("Weights must all be at least 30 kg.")
 
-  dosage <- dplyr::case_when(
+  dosage <- if(!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)|>
+  dplyr::case_when(
     weight <= 35 ~ 150,
     weight <= 45 ~ 200,
     weight <= 55 ~ 300,
